@@ -26,6 +26,10 @@ namespace E_Players_AspNETCore.Models
             return $"{e.IdEquipe};{e.Nome};{e.Imagem}";
         }
 
+        /// <summary>
+        /// Ler todas as linhas dos CSV
+        /// </summary>
+        /// <returns>Lista de equipes</returns>
         public List<Equipe> Ler()
         {
             List<Equipe> equipes = new List<Equipe>();
