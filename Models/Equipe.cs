@@ -23,7 +23,7 @@ namespace E_Players_AspNETCore.Models
         }
 
         private string PrepararLinhas(Equipe e){
-            return $"{e.IdEquipe};{e.Nome};{e.Imagem}";
+            return $"{e.IdEquipe};{e.Nome};{e.Imagem};";
         }
 
         /// <summary>
