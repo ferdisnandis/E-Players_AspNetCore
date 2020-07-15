@@ -49,6 +49,12 @@ namespace E_Players_AspNETCore.Controllers
             return LocalRedirect("~/Equipe");
         }
 
-
+        [Route("{id}")]
+        public IActionResult Excluir(int id)
+        {
+            equipeModel.Excluir(id);
+            ViewBag.Equipes = equipeModel.Ler();
+            return LocalRedirect("~/Equipe");
+        }
     }
 }   
