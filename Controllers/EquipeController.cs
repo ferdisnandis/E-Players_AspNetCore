@@ -1,11 +1,8 @@
 using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+using System.IO;
 using E_Players_AspNETCore.Models;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 
 namespace E_Players_AspNETCore.Controllers
 {
@@ -22,7 +19,29 @@ namespace E_Players_AspNETCore.Controllers
         {
             Equipe novaEquipe = new Equipe();
             novaEquipe.IdEquipe = Int32.Parse(form["IdEquipe"]);
-            novaEquipe.Imagem = form["Imagem"];
+            novaEquipe.Nome = form["Nome"];
+
+            //Upload Início
+            var file = form.Files[0];
+            var folder = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/img/Equipes");
+            if(file !=null)
+            {
+                if(!Directory.Exists(folder)){
+                    Directory.CreateDirectory(folder);
+                }
+
+                var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/img/", folder, file.FileName);
+                using (var stream = new FileStream(path, FileMode.Create))
+            {
+                file.CopyTo(stream);
+            }
+            novaEquipe.Imagem = file.FileName;
+        }
+        else
+        {
+            novaEquipe.Imagem = "padrao.png";
+        }
+        //Upload Final
 
             equipeModel.Criar(novaEquipe);
             ViewBag.Equipes = equipeModel.Ler();
@@ -30,5 +49,6 @@ namespace E_Players_AspNETCore.Controllers
             return LocalRedirect("~/Equipe");
         }
 
+
     }
-}
+}   
