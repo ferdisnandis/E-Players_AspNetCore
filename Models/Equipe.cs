@@ -20,7 +20,7 @@ namespace E_Players_AspNETCore.Models
         }
         
         /// <summary>
-        /// Criar linha CSV
+        /// Criar a pasta
         /// </summary>
         /// <param name="e">Equipe</param>
         public void Criar(Equipe e)

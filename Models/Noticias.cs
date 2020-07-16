@@ -8,19 +8,46 @@ namespace E_Players_AspNETCore.Models
     public class Noticias : EPlayersBase , INoticias
     {
         public int IdNoticia { get; set; }
-        public string Título { get; set; }
+        public string Titulo { get; set; }
         public string Texto { get; set; }
         public string Imagem { get; set; }
-        private const string PATH = "Database/Equipe.csv";
+        private const string PATH = "Database/Noticia.csv";
 
         /// <summary>
-        /// Criar a pasta 
+        /// Criar PATH
         /// </summary>
-        /// <param name="n">Noticias</param>
+        public Noticias()
+        {
+            CreateFolderAndFile(PATH);
+        }
+
         public void Criar(Noticias n)
         {
-            string[] linha = { PrepararLinhas(n) };
-            File.AppendAllLines(PATH, linha);
+            string[] linha = { PrepararLinhas (n) };
+            File.AppendAllLines(PATH, linha);;
+        }
+
+        private string PrepararLinhas( Noticias n)
+        {
+            return $"{n.IdNoticia};{n.Titulo};{n.Imagem};";
+        }
+
+        public List<Noticias> Ler()
+        {
+            List<Noticias> noticias = new List<Noticias>();
+            string[] linhas = File.ReadAllLines(PATH);
+
+            foreach (var item in linhas)
+            {
+                string[] linha = item.Split(";");
+                Noticias noticia = new Noticias();
+                noticia.IdNoticia = Int32.Parse(linha[0]);
+                noticia.Titulo = linha[1];
+                noticia.Imagem = linha [2];
+
+                noticias.Add(noticia);
+            }
+            return noticias;
         }
 
         public void Alterar(Noticias n)
@@ -31,34 +58,11 @@ namespace E_Players_AspNETCore.Models
             RewriteCSV(PATH, linhas);
         }
 
-        private string PrepararLinhas(Noticias n){
-            return $"{n.IdNoticia};{n.Título};{n.Imagem};{n.Texto};";
-        }
-
-        public void Excluir(int idNoticia)
+        public void Excluir( int IdNoticia)
         {
             List<string> linhas = ReadAllLinesCSV(PATH);
             linhas.RemoveAll(x => x.Split(";")[0] == IdNoticia.ToString());
             RewriteCSV(PATH, linhas);
-        }
-
-        public List<Noticias> Ler()
-        {
-            List<Noticias> equipes = new List<Noticias>();
-            string[] linhas = File.ReadAllLines(PATH);
-
-            foreach (var item in linhas)
-            {
-                string[] linha = item.Split(";");
-
-                Noticias equipe = new Noticias();
-                equipe.IdNoticia = Int32.Parse(linha[0]);
-                equipe.Título = linha[1];
-                equipe.Imagem = linha [2];
-
-                equipes.Add(equipe);
-            }
-            return equipes;
         }
     }
 }

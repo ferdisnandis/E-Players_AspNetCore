@@ -20546,6 +20546,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "c:\\Users\\fernanda1234\\Desktop\\E-Players_AspNETCore\\Views\\Noticia\\index.cshtml",
+      "TargetPath": "Views\\Noticia\\index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Users\\fernanda1234\\Desktop\\E-Players_AspNETCore\\Views\\_ViewStart.cshtml",
       "TargetPath": "Views\\_ViewStart.cshtml",
       "FileKind": "mvc"
@@ -20553,11 +20558,6 @@
     {
       "FilePath": "c:\\Users\\fernanda1234\\Desktop\\E-Players_AspNETCore\\Views\\Home\\Index.cshtml",
       "TargetPath": "Views\\Home\\Index.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\Users\\fernanda1234\\Desktop\\E-Players_AspNETCore\\Views\\Home\\Privacy.cshtml",
-      "TargetPath": "Views\\Home\\Privacy.cshtml",
       "FileKind": "mvc"
     }
   ],

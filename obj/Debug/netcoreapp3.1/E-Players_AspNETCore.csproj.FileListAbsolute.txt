@@ -35,3 +35,4 @@ C:\Users\fernanda1234\Desktop\E-Players_AspNETCore\obj\Debug\netcoreapp3.1\E-Pla
 C:\Users\fernanda1234\Desktop\E-Players_AspNETCore\obj\Debug\netcoreapp3.1\E-Players_AspNETCore.genruntimeconfig.cache
 C:\Users\fernanda1234\Desktop\E-Players_AspNETCore\obj\Debug\netcoreapp3.1\E-Players_AspNETCore.csproj.CopyComplete
 C:\Users\fernanda1234\Desktop\E-Players_AspNETCore\obj\Debug\netcoreapp3.1\Razor\Views\Equipe\index.cshtml.g.cs
+C:\Users\fernanda1234\Desktop\E-Players_AspNETCore\obj\Debug\netcoreapp3.1\Razor\Views\Noticia\index.cshtml.g.cs
