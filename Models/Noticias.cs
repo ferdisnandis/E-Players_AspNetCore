@@ -13,6 +13,15 @@ namespace E_Players_AspNETCore.Models
         public string Imagem { get; set; }
         private const string PATH = "Database/Equipe.csv";
 
+        /// <summary>
+        /// Criar a pasta 
+        /// </summary>
+        /// <param name="n">Noticias</param>
+        public void Criar(Noticias n)
+        {
+            string[] linha = { PrepararLinhas(n) };
+            File.AppendAllLines(PATH, linha);
+        }
 
         public void Alterar(Noticias n)
         {
@@ -22,10 +31,6 @@ namespace E_Players_AspNETCore.Models
             RewriteCSV(PATH, linhas);
         }
 
-        public void Criar(Noticias n)
-        {
-            throw new System.NotImplementedException();
-        }
         private string PrepararLinhas(Noticias n){
             return $"{n.IdNoticia};{n.Título};{n.Imagem};{n.Texto};";
         }

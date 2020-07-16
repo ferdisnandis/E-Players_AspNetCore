@@ -12,6 +12,7 @@ namespace E_Players_AspNETCore
             string folder   = _path.Split("/")[0];
             string file     = _path.Split("/")[1];
 
+            //Criar pasta 
             if(!Directory.Exists(folder)){
                 Directory.CreateDirectory(folder);
             }
@@ -20,7 +21,11 @@ namespace E_Players_AspNETCore
                 File.Create(_path).Close();
             }
         }
-    
+            /// <summary>
+            /// Ler linhas do CSV
+            /// </summary>
+            /// <param name="PATH">CSV</param>
+            /// <returns></returns>
             public List<string> ReadAllLinesCSV(string PATH){
             
             List<string> linhas = new List<string>();
@@ -34,7 +39,11 @@ namespace E_Players_AspNETCore
             }
             return linhas;
         }
-
+        /// <summary>
+        /// Reescrever as linhas do CSV
+        /// </summary>
+        /// <param name="PATH">CSV</param>
+        /// <param name="linhas">Linhas</param>
         public void RewriteCSV(string PATH, List<string> linhas)
         {
             using(StreamWriter output = new StreamWriter(PATH))

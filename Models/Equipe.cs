@@ -12,16 +12,28 @@ namespace E_Players_AspNETCore.Models
         public string Imagem { get; set; }
         private const string PATH = "Database/Equipe.csv";
 
+        /// <summary>
+        /// Criar PATH
+        /// </summary>
         public Equipe(){
             CreateFolderAndFile(PATH);
         }
         
+        /// <summary>
+        /// Criar linha CSV
+        /// </summary>
+        /// <param name="e">Equipe</param>
         public void Criar(Equipe e)
         {
             string[] linha = { PrepararLinhas(e) };
             File.AppendAllLines(PATH, linha);;
         }
 
+        /// <summary>
+        /// Preparar linhas para CSV
+        /// </summary>
+        /// <param name="e">Equipe</param>
+        /// <returns></returns>
         private string PrepararLinhas(Equipe e){
             return $"{e.IdEquipe};{e.Nome};{e.Imagem};";
         }
@@ -48,7 +60,10 @@ namespace E_Players_AspNETCore.Models
             }
             return equipes;
         }
-
+        /// <summary>
+        /// Alterar linha do CSV
+        /// </summary>
+        /// <param name="e">Equipe</param>
         public void Alterar(Equipe e)
         {
             List<string> linhas = ReadAllLinesCSV(PATH);
@@ -56,7 +71,10 @@ namespace E_Players_AspNETCore.Models
             linhas.Add( PrepararLinhas(e) );
             RewriteCSV(PATH, linhas);
         }
-
+        /// <summary>
+        /// Excluir a linha pelo Id
+        /// </summary>
+        /// <param name="idEquipe">Código da Equipe</param>
         public void Excluir(int idEquipe)
         {
             List<string> linhas = ReadAllLinesCSV(PATH);
