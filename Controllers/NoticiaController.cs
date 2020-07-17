@@ -51,12 +51,12 @@ namespace E_Players_AspNETCore.Controllers
             return LocalRedirect("~/Noticias");
         }
 
-        [Route("{id}")]
-        public IActionResult Excluir(int id)
-        {
-            noticiaModel.Deletar(id);
-           //  ViewBag.Noticias = noticiaModel.Ler();
-            return LocalRedirect("~/Noticia");
-        }
+         [Route("Noticias/{id}")]
+         public IActionResult Excluir(int id)
+         {
+             noticiaModel.Deletar(id);
+             ViewBag.Noticias = noticiaModel.Ler();
+             return LocalRedirect("~/Noticia");
+         }
     }
 }

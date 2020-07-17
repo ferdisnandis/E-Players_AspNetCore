@@ -45,6 +45,7 @@ namespace E_Players_AspNETCore.Models
             {
                 string[] linha = item.Split(";");
                 Noticias noticia = new Noticias();
+                
                 noticia.IdNoticia = Int32.Parse(linha[0]);
                 noticia.Titulo = linha[1];
                 noticia.Imagem = linha [2];
