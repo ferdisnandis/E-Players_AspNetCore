@@ -25,13 +25,17 @@ namespace E_Players_AspNETCore.Models
         {
             string[] linha = { PrepararLinhas (n) };
             File.AppendAllLines(PATH, linha);;
-        }
+         }
 
         private string PrepararLinhas( Noticias n)
         {
             return $"{n.IdNoticia};{n.Titulo};{n.Imagem};";
         }
 
+        /// <summary>
+        /// Lê todas as linhas do CSV
+        /// </summary>
+        /// <returns>Lista de Notícias</returns>
         public List<Noticias> Ler()
         {
             List<Noticias> noticias = new List<Noticias>();
@@ -49,7 +53,10 @@ namespace E_Players_AspNETCore.Models
             }
             return noticias;
         }
-
+        /// <summary>
+        /// Altera a notícia
+        /// </summary>
+        /// <param name="n">Notícia alterada</param>
         public void Alterar(Noticias n)
         {
             List<string> linhas = ReadAllLinesCSV(PATH);
@@ -58,7 +65,7 @@ namespace E_Players_AspNETCore.Models
             RewriteCSV(PATH, linhas);
         }
 
-        public void Excluir( int IdNoticia)
+        public void Deletar( int IdNoticia )
         {
             List<string> linhas = ReadAllLinesCSV(PATH);
             linhas.RemoveAll(x => x.Split(";")[0] == IdNoticia.ToString());

@@ -14,8 +14,8 @@ namespace E_Players_AspNETCore.Controllers
             ViewBag.Noticias = noticiaModel.Ler();
             return View();
         }
-
-        public IActionResult Cadastrar (IFormCollection form)
+ 
+        public IActionResult Cadastrar(IFormCollection form)
         {
             Noticias novaNoticia = new Noticias();
             novaNoticia.IdNoticia = Int32.Parse(form["IdNoticia"]);
@@ -51,11 +51,11 @@ namespace E_Players_AspNETCore.Controllers
             return LocalRedirect("~/Noticias");
         }
 
-        [Route("{idNoticias}")]
-        public IActionResult Excluir(int IdNoticias)
+        [Route("{id}")]
+        public IActionResult Excluir(int id)
         {
-            noticiaModel.Excluir(IdNoticias);
-            ViewBag.Noticias = noticiaModel.Ler();
+            noticiaModel.Deletar(id);
+           //  ViewBag.Noticias = noticiaModel.Ler();
             return LocalRedirect("~/Noticia");
         }
     }

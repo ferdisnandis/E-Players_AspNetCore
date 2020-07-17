@@ -12,6 +12,6 @@ namespace E_Players_AspNETCore.Interfaces
         //Alterar
         void Alterar(Noticias n);
         //Excluir
-        void Excluir (int idNoticia);
+        void Deletar (int idNoticia);
     }
 }
